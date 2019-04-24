@@ -56,15 +56,23 @@
 					</div>
 					<div class="form-group">
 						<div class="col-xs-12">
-							<input class="form-control" type="password" required="" placeholder="Kata Sandi" name="pass">
+							<input class="form-control" type="password" id="pass" required="" placeholder="Kata Sandi" name="pass">
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-12">
+						<div class="col-md-6">
 							<div class="checkbox checkbox-info pull-left p-t-0">
 								<input id="checkbox-signup" type="checkbox" name="remmember">
 								<label for="checkbox-signup"> Tetap Login </label>
 							</div>
+						</div>
+						<div class="col-md-6">
+						<!-- Soko Kene -->
+							<div class="checkbox checkbox-info pull-left p-t-0">
+								<input id="lihat_pass" type="checkbox">
+								<label for="checkbox-signup"> Lihat Kata Sandi </label>
+							</div>
+						<!-- Tekan Kene -->
 						</div>
 					</div>
 					<?php if(!empty($error)){ ?>
@@ -98,6 +106,16 @@
 	<script src="<?= base_url() ?>assets/js/custom.min.js"></script>
 	<!--Style Switcher -->
 	<script src="<?= base_url() ?>assets/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+	<script>
+		$('#lihat_pass').change(function (e) { 
+			e.preventDefault();
+			if($('#pass').attr('type')=='password'){
+				$('#pass').attr('type', 'text');
+			}else{
+				$('#pass').attr('type', 'password');
+			}
+		});
+	</script>
 </body>
 
 </html>
