@@ -36,6 +36,10 @@
     <!-- Custom -->
     <link href="<?= base_url() ?>assets/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>assets/plugins/bower_components/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+
+    <!-- SweetAlert -->
+    <link href="<?= base_url() ?>assets/plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+    <script src="<?= base_url() ?>assets/plugins/bower_components/sweetalert/sweetalert.min.js"></script>
     <!-- End -->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

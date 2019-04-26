@@ -84,11 +84,11 @@ function get_data(){
             {
                 "data": 'id_operator',
                 "mRender": function (data) {
-                    var id_artikel = "'" + data + "'";
+                    var id_operator = "'" + data + "'";
                     return `
                         <center>
                             <button type="button" class="btn btn-primary btn-outline btn-circle"><i class="fa fa-pencil"></i> </button>
-                            <button type="button" class="btn btn-danger btn-outline btn-circle"><i class="fa fa-trash"></i> </button>
+                            <button type="button" class="btn btn-danger btn-outline btn-circle" onclick="delete_data(`+id_operator+`)"><i class="fa fa-trash"></i> </button>
                         </center>
                     `;
                 }
@@ -139,5 +139,38 @@ function tambah_data(){
             $('#lev_user')[0].selected = true;
             $('#tambah-pengguna').modal('hide');
         }
+    });
+}
+
+function delete_data(data) { 
+    swal({   
+        title: "Apa anda yakin?",   
+        text: "Pengguna yang sudah dihapus tidak bisa mengakses aplikasi kembali!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Ya",   
+        cancelButtonText: "Batal",   
+        closeOnConfirm: false,   
+        closeOnCancel: true 
+    }, function(isConfirm){   
+        if (isConfirm) {
+            $.ajax({
+                type: "post",
+                url: delete_url,
+                data: {
+                    "id_operator" : data
+                },
+                dataType: "json",
+                success: function (response) {
+                    if(response.success=="1"){
+                        swal("Berhasil!", "Pengguna ID."+data+" telah terhapus.", "success");   
+                    }else{
+                        swal("Gagal!", "Penghapusan pengguna gagal di lakukan.", "error");   
+                    }
+                }
+            });     
+            
+        } 
     });
 }

@@ -111,6 +111,24 @@ class Pengguna extends CI_Controller {
         }
     }
 
+    public function delete(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $id_operator = $this->input->post('id_operator');
+            
+            $this->moperator->delete($id_operator);
+
+            $result['success'] = "1";
+            $result["message"] = "Berhasil";
+    
+            echo json_encode($result);
+        }else{
+            $result['success'] = "0";
+            $result["message"] = "Gagal";
+    
+            echo json_encode($result);
+        }
+    }
+
 }
 
 /* End of file Pengguna.php */
