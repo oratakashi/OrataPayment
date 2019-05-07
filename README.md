@@ -11,6 +11,13 @@
 <p align="center" style="color:green">
   Project Status : Work in Progress
 </p>
+<span align="center">
+
+![GitHub Last](https://img.shields.io/github/last-commit/oratakashi/OrataPayment.svg)
+![GitHub repo size in bytes](https://img.shields.io/github/repo-size/oratakashi/OrataPayment.svg)
+![GitHub Lisence](https://img.shields.io/github/license/oratakashi/OrataPayment.svg)
+
+</span>
 <br>
 
 ![Orata Payment SS](ss.png)
