@@ -4,8 +4,11 @@
 		<h1 align="center">OrataPayment</h1>
   </a>
 </p>
-<p>
+<p align="center">
   OrataPayment adalah Aplikasi pembayaran sekolah online, build with Code Igniter and ajax.
+</p>
+<p align="center" style="color:green">
+  Project Status : Work in Progress
 </p>
 <br>
 
