@@ -87,7 +87,7 @@ function get_data(){
                     var id_operator = "'" + data + "'";
                     return `
                         <center>
-                            <button type="button" class="btn btn-primary btn-outline btn-circle"><i class="fa fa-pencil"></i> </button>
+                            <button type="button" class="btn btn-primary btn-outline btn-circle" onclick="modal_update(`+id_operator+`)"><i class="fa fa-pencil"></i> </button>
                             <button type="button" class="btn btn-danger btn-outline btn-circle" onclick="delete_data(`+id_operator+`)"><i class="fa fa-trash"></i> </button>
                         </center>
                     `;
@@ -172,5 +172,13 @@ function delete_data(data) {
             });     
             
         } 
+    });
+}
+
+function modal_update(data){
+    
+    $('#ubah-pengguna').modal({
+        keyboard: false,
+        show: true
     });
 }

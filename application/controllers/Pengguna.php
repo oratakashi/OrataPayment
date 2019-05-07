@@ -111,6 +111,9 @@ class Pengguna extends CI_Controller {
         }
     }
 
+    /**
+     * Method untuk menghapus pengguna dari DB
+     */
     public function delete(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
             $id_operator = $this->input->post('id_operator');
@@ -121,6 +124,19 @@ class Pengguna extends CI_Controller {
             $result["message"] = "Berhasil";
     
             echo json_encode($result);
+        }else{
+            $result['success'] = "0";
+            $result["message"] = "Gagal";
+    
+            echo json_encode($result);
+        }
+    }
+
+    /**
+     * Method untuk melihat detail pengguna
+     */
+    public function read_data(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
         }else{
             $result['success'] = "0";
             $result["message"] = "Gagal";

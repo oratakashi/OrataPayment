@@ -90,6 +90,7 @@
                     $this->load->view('content/pengguna.php');
                     $this->load->view('ajax/pengguna.php');
                     $this->load->view('modal/tambah_pengguna.php');
+                    $this->load->view('modal/ubah_pengguna.php');
                 }
             ?>
             <!-- /.container-fluid -->
