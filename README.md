@@ -5,8 +5,9 @@
   </a>
 </p>
 <p align="center">
-  OrataPayment adalah Aplikasi pembayaran sekolah online, build with Code Igniter and ajax. aplikasi ini di buat oleh mahasiswa semester akhir D2 Program Studi Teknik Informatika Politeknik Negeri Bandung.
+  OrataPayment adalah Aplikasi pembayaran sekolah online, build with Code Igniter and ajax. 
 </p>
+<p align="center">Aplikasi ini di buat oleh mahasiswa semester akhir D2 Program Studi Teknik Informatika Politeknik Negeri Bandung.</p>
 <p align="center" style="color:green">
   Project Status : Work in Progress
 </p>
