@@ -16,6 +16,8 @@
 ![GitHub Last](https://img.shields.io/github/last-commit/oratakashi/OrataPayment.svg)
 ![GitHub repo size in bytes](https://img.shields.io/github/repo-size/oratakashi/OrataPayment.svg)
 ![GitHub Lisence](https://img.shields.io/github/license/oratakashi/OrataPayment.svg)
+![GitHub Follower](https://img.shields.io/github/followers/oratakashi.svg?label=Folow%20Me&style=social)
+
 
 </span>
 <h1></h1>
