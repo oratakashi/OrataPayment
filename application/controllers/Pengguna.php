@@ -137,6 +137,11 @@ class Pengguna extends CI_Controller {
      */
     public function read_data(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
+            $id_operator = $this->input->post('id_operator');
+            
+            $data = $this->moperator->read_id($id_operator)->result_array();
+
+            echo json_encode($data);
         }else{
             $result['success'] = "0";
             $result["message"] = "Gagal";

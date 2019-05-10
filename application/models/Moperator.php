@@ -16,6 +16,12 @@ class Moperator extends CI_Model {
         $this->db->select('id_operator, nama_operator, email, lev_user, foto');
         return $this->db->get('tb_operator');
     }
+    public function read_id($id_operator){
+        $this->db->select('id_operator, nama_operator, email, lev_user, foto');
+        $this->db->where('id_operator', $id_operator);
+        
+        return $this->db->get('tb_operator');
+    }
 
     public function cekID($id_operator){
         $this->db->where('id_operator', $id_operator);
