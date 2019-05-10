@@ -18,6 +18,7 @@
 ![GitHub Lisence](https://img.shields.io/github/license/oratakashi/OrataPayment.svg)
 
 </span>
+<h1></h1>
 <br>
 
 ![Orata Payment SS](ss.png)
@@ -28,7 +29,7 @@ OrataPayment is under the [MIT License](LICENSE)
 ## Supported 
 <p >
   <a href="https://www.polban.ac.id">
-    <img src="https://www.polban.ac.id/wp-content/uploads/2017/11/logo-web-polban.png" alt="Polban logo" width="220" height="75">
+    <img src="https://www.polban.ac.id/wp-content/uploads/2017/11/logo-web-polban.png" alt="Polban logo" width="240" height="75">
   </a>
 </p>
 
