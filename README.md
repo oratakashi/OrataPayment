@@ -9,7 +9,7 @@
 </p>
 <p align="center">Aplikasi ini di buat oleh mahasiswa semester akhir D2 Program Studi Teknik Informatika Politeknik Negeri Bandung.</p>
 <p align="center" style="color:green">
-  Project Status : Work in Progress
+	Project Status : <a href="https://github.com/oratakashi/OrataPayment/commits/master">Work in Progress</a>
 </p>
 <span align="center">
 
