@@ -54,12 +54,6 @@ $(document).ready(function () {
         $('#validation').html('');
         $('#layout_levuser').removeClass('has-error');
     });
-    for(var i=0; i<=100; i++){
-        
-        $('#loading').html(i+'%');
-        $('#loading').css('width', i+'%');
-    }
-    $('#loading_bg').delay(500).slideUp();
 });
 
 function get_data(){
@@ -176,7 +170,44 @@ function delete_data(data) {
 }
 
 function modal_update(data){
-    
+    $.ajax({
+        type: "post",
+        url: read_data,
+        data: {
+            'id_operator' : data
+        },
+        dataType: "json",
+        success: function (response) {
+            $('#id_operator2').val(response.id_operator);
+            $('#nama_operator2').val(response.nama_operator);
+            $('#email2').val(response.email);
+            if(response.lev_user == 'Kepala Sekolah'){
+                $('#lev_user2 option')[1].selected = true;
+            }else{
+                $('#lev_user2 option')[2].selected = true;
+
+            }
+        }
+    });
+    $('#btnUbah').click(function (e) { 
+        e.preventDefault();
+        $('input').prop('disabled', true);
+        $('button').prop('disabled', true);
+        $.ajax({
+            type: "post",
+            url: update,
+            data: {
+                'id_operator' : $('#id_operator2').val(),
+                'nama_operator' : $('#nama_operator2').val(),
+                'email' : $('#email2').val(),
+                'lev_user' : $('#lev_user2').val()
+            },
+            dataType: "json",
+            success: function (response) {
+                
+            }
+        });
+    });
     $('#ubah-pengguna').modal({
         keyboard: false,
         show: true

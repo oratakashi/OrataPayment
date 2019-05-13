@@ -38,6 +38,11 @@ class Moperator extends CI_Model {
         return $this->db->delete('tb_operator');
     }
 
+    public function update($id_operator, $data){
+        $this->db->where('id_operator', $id_operator);
+        return $this->db->update('tb_operator', $data);
+    }
+
 }
 
 /* End of file Moperator.php */

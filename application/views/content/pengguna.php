@@ -19,9 +19,6 @@
 				<h3 class="box-title m-b-0">Data Pengguna<button class="btn btn-primary btn-outline btn-rounded" style="float:right" data-trigger="tambah_pengguna" id="btnTambah"><i class="ti-plus"></i> Tambah</button></h3>
 				<p class="text-muted m-b-30">Menampilkan data pengguna aplikasi <?= $nama_apps ?></p>
 				<div class="table-responsive">
-					<div class="progress progress-lg" id="loading_bg">
-						<div class="progress-bar progress-bar-primary" style="width: 0%;" role="progressbar" id="loading"></div>
-					</div>
 					<table id="data-pengguna" class="table table-striped">
 						<thead>
 							<tr>

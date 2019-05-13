@@ -32,7 +32,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default btn-outline waves-effect" data-dismiss="modal">Batal</button>
-				<button type="button" class="btn btn-danger btn-outline waves-effect" id="btnSimpan">Simpan</button>
+				<button type="button" class="btn btn-danger btn-outline waves-effect" id="btnUbah">Simpan</button>
 			</div>
 		</div>
 		<!-- /.modal-content -->

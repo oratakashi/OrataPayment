@@ -141,7 +141,31 @@ class Pengguna extends CI_Controller {
             
             $data = $this->moperator->read_id($id_operator)->result_array();
 
-            echo json_encode($data);
+            echo json_encode($data[0]);
+        }else{
+            $result['success'] = "0";
+            $result["message"] = "Gagal";
+    
+            echo json_encode($result);
+        }
+    }
+
+    public function update(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $id_operator = $this->input->post('id_operator');
+            
+            $data = array(
+                'nama_operator' => $this->input->post('nama_operator'),
+                'email'         => $this->input->post('email'),
+                'lev_user'      => $this->input->post('lev_user')
+            );
+            
+            $this->moperator->update($id_operator, $data);
+
+            $result['success'] = "1";
+            $result["message"] = "Berhasil";
+    
+            echo json_encode($result);
         }else{
             $result['success'] = "0";
             $result["message"] = "Gagal";
