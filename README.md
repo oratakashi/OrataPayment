@@ -16,6 +16,9 @@
 ![GitHub Last](https://img.shields.io/github/last-commit/oratakashi/OrataPayment.svg)
 ![GitHub repo size in bytes](https://img.shields.io/github/repo-size/oratakashi/OrataPayment.svg)
 ![GitHub Lisence](https://img.shields.io/github/license/oratakashi/OrataPayment.svg)
+![GitHub Language](https://img.shields.io/github/languages/top/oratakashi/OrataPayment.svg)
+![GitHub Download Count](https://img.shields.io/github/downloads/oratakashi/OrataPayment/total.svg?label=Jumlah%20Download)
+![GitHub Download Rilis](https://img.shields.io/github/release-date/oratakashi/OrataPayment.svg?color=red&label=Tanggal%20Rilis)
 ![GitHub Follower](https://img.shields.io/github/followers/oratakashi.svg?label=Folow%20Me&style=social)
 
 
