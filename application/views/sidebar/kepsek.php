@@ -13,7 +13,7 @@
 			<li><a href="inbox.html" class="waves-effect"><i class="mdi mdi-apple-keyboard-command fa-fw"></i> <span
 						class="hide-menu">Data Master<span class="fa arrow"></span></span></a>
 				<ul class="nav nav-second-level">
-					<li><a href="chat.html"><i class="ti-calendar fa-fw"></i><span
+					<li><a href="<?= base_url('ta') ?>"><i class="ti-calendar fa-fw"></i><span
 						class="hide-menu">Tahun Ajaran</span></a></li>
 					<li><a href="chat.html"><i class="ti-tag fa-fw"></i><span
 						class="hide-menu">Kelas</span></a></li>

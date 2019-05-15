@@ -91,6 +91,10 @@
                     $this->load->view('ajax/pengguna.php');
                     $this->load->view('modal/tambah_pengguna.php');
                     $this->load->view('modal/ubah_pengguna.php');
+                }elseif($content == 'ta'){
+                    $this->load->view('content/ta.php');
+                    $this->load->view('ajax/ta.php');
+                    $this->load->view('modal/tambah_ta.php');
                 }
             ?>
             <!-- /.container-fluid -->
