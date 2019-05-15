@@ -204,7 +204,19 @@ function modal_update(data){
             },
             dataType: "json",
             success: function (response) {
-                
+                console.log(response);
+                if(response.code == '1'){
+                    swal("Berhasil!", "Pengguna ID."+data+" telah diperbarui.", "success");  
+                    
+                    $('#ubah-pengguna').modal('hide');
+                    $('input').prop('disabled', false);
+                    $('button').prop('disabled', false);
+
+                }else{
+                    swal("Gagal!", "Update pengguna gagal di lakukan.", "error");   
+                    $('input').prop('disabled', false);
+                    $('button').prop('disabled', false);
+                }
             }
         });
     });

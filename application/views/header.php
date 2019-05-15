@@ -28,7 +28,7 @@
 						<div class="dw-user-box">
 							<div class="u-img"><img src="<?= base_url() ?>plugins/images/users/varun.jpg" alt="user" /></div>
 							<div class="u-text">
-								<h4><?= $this->session->userdata('nama_operator');  ?></h4>
+								<h4 id="txtNama"><?= $this->session->userdata('nama_operator');  ?></h4>
 								<p class="text-muted"><?= $this->session->userdata('email');  ?></p><p
 									class="btn btn-rounded btn-danger btn-sm col-md-12"><?= $this->session->userdata('lev_user');  ?></p>
 							</div>

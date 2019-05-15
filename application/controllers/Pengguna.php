@@ -162,12 +162,23 @@ class Pengguna extends CI_Controller {
             
             $this->moperator->update($id_operator, $data);
 
-            $result['success'] = "1";
+            if($id_operator == $this->session->userdata('id_operator')){
+                
+                $array = array(
+                    'nama_operator' => $this->input->post('nama_operator'),
+                    'email' => $this->input->post('email'),
+                    'lev_user' => $this->input->post('lev_user')
+                );
+                
+                $this->session->set_userdata( $array );
+                
+            }
+            $result['code'] = "1";
             $result["message"] = "Berhasil";
     
             echo json_encode($result);
         }else{
-            $result['success'] = "0";
+            $result['code'] = "0";
             $result["message"] = "Gagal";
     
             echo json_encode($result);
