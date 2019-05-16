@@ -19,6 +19,10 @@ class Mta extends CI_Model {
         return $this->db->get('tb_tahunajaran');
     }
 
+    public function create($data){
+        return $this->db->insert('tb_tahunajaran', $data);
+    }
+
 }
 
 /* End of file Mta.php */

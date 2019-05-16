@@ -97,7 +97,17 @@ class Ta extends CI_Controller {
      */
 
     public function create(){
-        
+        $data = array(
+            'tahun_ajaran' => $this->input->post('ta'),
+            'sta_aktif' => '0'
+        );
+
+        $this->mta->create($data);
+
+        $result['code'] = "1";
+        $result["message"] = "Berhasil";
+
+        echo json_encode($result);
     }
 
 }
