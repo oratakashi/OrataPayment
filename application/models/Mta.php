@@ -23,6 +23,10 @@ class Mta extends CI_Model {
         return $this->db->insert('tb_tahunajaran', $data);
     }
 
+    public function delete($id_ta){
+        $this->db->where('id_ta', $id_ta);
+        return $this->db->delete('tb_tahunajaran');
+    }
 }
 
 /* End of file Mta.php */

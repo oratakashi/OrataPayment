@@ -125,3 +125,36 @@ function tambah_data() {
         }
     });
 }
+
+function delete_data(data) { 
+    swal({   
+        title: "Apa anda yakin?",   
+        text: "Semua data yang berkaitan dengan tahun ajaran tersebut akan terhapus juga!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Ya",   
+        cancelButtonText: "Batal",   
+        closeOnConfirm: false,   
+        closeOnCancel: true 
+    }, function(isConfirm){   
+        if (isConfirm) {
+            $.ajax({
+                type: "post",
+                url: delete_url,
+                data: {
+                    "id_ta" : data
+                },
+                dataType: "json",
+                success: function (response) {
+                    if(response.success=="1"){
+                        swal("Berhasil!", "Tahun Ajaran telah terhapus.", "success");   
+                    }else{
+                        swal("Gagal!", "Penghapusan Tahun Ajaran gagal di lakukan.", "error");   
+                    }
+                }
+            });     
+            
+        } 
+    });
+}
