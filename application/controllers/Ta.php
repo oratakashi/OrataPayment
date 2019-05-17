@@ -65,6 +65,12 @@ class Ta extends CI_Controller {
     public function update(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
             $id_ta = $this->input->post('id_ta');
+
+            $data = array(
+                'sta_aktif' => '0'
+            );
+
+            $this->mta->reset_aktif($data);
             
             $data = $this->mta->read_id($id_ta)->row();
             if($data->sta_aktif == '1'){
