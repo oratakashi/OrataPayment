@@ -13,6 +13,8 @@ $(document).ready(function () {
         $('button').prop('disabled', true);
         $('#layout_ta').removeClass('has-error');
         if ($('#ta').val() == '') {
+            $('input').prop('disabled', false);
+            $('button').prop('disabled', false)
             $('#validation').html(`<div class="alert alert-danger alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> Tahun Ajaran tidak boleh kosong. </div>`);
             $('#layout_ta').addClass('has-error');

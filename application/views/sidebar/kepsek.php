@@ -15,11 +15,11 @@
 				<ul class="nav nav-second-level">
 					<li><a href="<?= base_url('ta') ?>"><i class="ti-calendar fa-fw"></i><span
 						class="hide-menu">Tahun Ajaran</span></a></li>
-					<li><a href="chat.html"><i class="ti-tag fa-fw"></i><span
+					<li><a href="<?= base_url('kelas') ?>"><i class="ti-tag fa-fw"></i><span
 						class="hide-menu">Kelas</span></a></li>
-					<li><a href="chat.html"><i class="ti-user fa-fw"></i><span
+					<li><a href="<?= base_url('siswa') ?>"><i class="ti-user fa-fw"></i><span
 						class="hide-menu">Siswa</span></a></li>
-					<li><a href="chat.html"><i class="ti-panel fa-fw"></i><span
+					<li><a href="setkelas"><i class="ti-panel fa-fw"></i><span
 						class="hide-menu">Pengaturan Kelas</span></a></li>
 				</ul>
 			</li>
@@ -34,10 +34,10 @@
 			<li> <a href="widgets.html" class="waves-effect"><i class="ti-shopping-cart-full fa-fw"></i> <span
 					class="hide-menu">Pembayaran Lain-lain</span></a> </li>
 			<li class="devider"></li>
-			<li> <a href="#" class="waves-effect"><i class="mdi mdi-printer fa-fw"></i> <span
+			<li> <a href="index.html" class="waves-effect"><i class="mdi mdi-printer fa-fw"></i> <span
 						class="hide-menu">Cetak Transaksi<span class="fa arrow"></span></span></a>
 				<ul class="nav nav-second-level">
-					<li> <a href="#"><i class=" ti-file fa-fw"></i><span class="hide-menu">Pembayaran SPP</span></a> </li>
+					<li> <a href="<?= base_url('cetak/spp') ?>"><i class=" ti-file fa-fw"></i><span class="hide-menu">Pembayaran SPP</span></a> </li>
 					<li> <a href="fontawesome.html"><i class=" ti-file fa-fw"></i><span class="hide-menu">Pembayaran Lain-lain</span></a> </li>
 				</ul>
 			</li>
@@ -46,7 +46,7 @@
 						class="hide-menu">Pengaturan<span class="fa arrow"></span></span></a>
 				<ul class="nav nav-second-level">
 					<li> <a href="<?= base_url('pengguna') ?>"><i class="ti-user fa-fw"></i><span class="hide-menu">Konfigurasi Pengguna</span></a> </li>
-					<li> <a href="fontawesome.html"><i class="ti-ruler-pencil fa-fw"></i><span class="hide-menu">Konfigurasi Sekolah</span></a> </li>
+					<li> <a href="<?= base_url('sekolah') ?>"><i class="ti-ruler-pencil fa-fw"></i><span class="hide-menu">Konfigurasi Sekolah</span></a> </li>
 					<li> <a href="themifyicon.html"><i class="ti-server fa-fw"></i><span class="hide-menu">Konfigurasi Aplikasi</span></a> </li>
 				</ul>
 			</li>

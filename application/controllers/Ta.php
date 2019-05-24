@@ -120,7 +120,7 @@ class Ta extends CI_Controller {
      * Method untuk hapus tahun ajaran dari DB
      */
 
-     public function delete(){
+    public function delete(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
             $id_ta = $this->input->post('id_ta');
             
@@ -128,15 +128,15 @@ class Ta extends CI_Controller {
 
             $result['success'] = "1";
             $result["message"] = "Berhasil";
-    
+
             echo json_encode($result);
         }else{
             $result['success'] = "0";
             $result["message"] = "Gagal";
-    
+
             echo json_encode($result);
         }
-     }
+    }
 }
 
 /* End of file Ta.php */

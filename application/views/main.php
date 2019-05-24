@@ -36,6 +36,7 @@
     <!-- Custom -->
     <link href="<?= base_url() ?>assets/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>assets/plugins/bower_components/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/bower_components/dropify/dist/css/dropify.min.css">
 
     <!-- SweetAlert -->
     <link href="<?= base_url() ?>assets/plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
@@ -95,6 +96,14 @@
                     $this->load->view('content/ta.php');
                     $this->load->view('ajax/ta.php');
                     $this->load->view('modal/tambah_ta.php');
+                }elseif($content == 'kelas'){
+                    $this->load->view('content/kelas.php');
+                    $this->load->view('ajax/kelas.php');
+                    $this->load->view('modal/tambah_kelas.php');
+                }elseif($content == 'sekolah'){
+                    $this->load->view('content/sekolah.php');
+                    $this->load->view('ajax/kelas.php');
+                    $this->load->view('modal/tambah_kelas.php');
                 }
             ?>
             <!-- /.container-fluid -->
@@ -133,6 +142,18 @@
     <!-- Custom Theme JavaScript -->
     <script src="<?= base_url() ?>assets/js/custom.min.js"></script>
     <script src="<?= base_url() ?>assets/js/dashboard1.js"></script>
+
+    <script src="<?= base_url() ?>assets/js/cbpFWTabs.js"></script>
+    <script src="<?= base_url() ?>assets/plugins/bower_components/dropify/dist/js/dropify.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+                var array = new Array();
+                [].slice.call(document.querySelectorAll('.sttabs')).forEach(function (el) {
+                    new CBPFWTabs(el);
+                });
+        })();
+        
+    </script>
     
     
     <!--Style Switcher -->
@@ -140,6 +161,22 @@
     <script src="<?= base_url() ?>assets/plugins/bower_components/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
     <script>
         $('#sample').DataTable();
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Klik atau seret gambar untuk mengganti logo',
+                'replace': 'Klik atau seret gambar untuk mengganti logo',
+                'remove':  'Remove',
+                'error':   'Ooops, something wrong happended.'
+            },
+            error: {
+                'fileSize': 'The file size is too big ({{ value }} max).',
+                'minWidth': 'The image width is too small ({{ value }}}px min).',
+                'maxWidth': 'The image width is too big ({{ value }}}px max).',
+                'minHeight': 'The image height is too small ({{ value }}}px min).',
+                'maxHeight': 'The image height is too big ({{ value }}px max).',
+                'imageFormat': 'The image format is not allowed ({{ value }} only).'
+            }
+        });
     </script>
 </body>
 
