@@ -4,7 +4,13 @@
     
     class Mkelas extends CI_Model {
     
+        public function readAll(){
+            return $this->db->get('tb_kelas');
+        }
+
         public function read(){
+            $this->db->where_not_in('id_kelas', 'KLS00');
+            
             return $this->db->get('tb_kelas');
         }
 

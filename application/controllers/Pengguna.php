@@ -49,7 +49,7 @@ class Pengguna extends CI_Controller {
 
     public function read()
     {
-        $data = $this->moperator->read()->result_array();
+        $data = $this->moperator->read($this->session->userdata('id_operator'))->result_array();
         
         echo json_encode(array("pengguna"=>$data));
     }

@@ -59,7 +59,27 @@
             $this->core->update_sch($data);
 
             echo "<script>alert('Data Tersimpan!')</script>";
-            redirect('sekolah#section-linemove-1','refresh');
+            redirect('sekolah','refresh');
+            
+        }elseif($this->uri->segment(3) == 'logo'){
+            
+            $config['upload_path'] = './plugins/images/';
+            $config['allowed_types'] = 'png';
+            $config['file_name']            = "logo.png";
+            $config['overwrite']            = true;
+            
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+            if ( ! $this->upload->do_upload('logo')){
+                $error = array('error' => $this->upload->display_errors());
+                echo "<script>alert('Data gagal di simpan!')</script>";
+                redirect('sekolah','refresh');
+            }
+            else{
+                $data = array('upload_data' => $this->upload->data());
+                echo "<script>alert('Data Tersimpan!')</script>";
+                redirect('sekolah','refresh');
+            }
             
         }
     }

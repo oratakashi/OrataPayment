@@ -12,7 +12,9 @@ class Moperator extends CI_Model {
         return $this->db->get_where('tb_operator', $data);
     }
 
-    public function read(){
+    public function read($id_operator){
+        $this->db->where_not_in('id_operator', $id_operator);
+        
         $this->db->select('id_operator, nama_operator, email, lev_user, foto');
         return $this->db->get('tb_operator');
     }

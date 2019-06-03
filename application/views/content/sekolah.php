@@ -62,10 +62,10 @@
                             </form>
                         </section>
                         <section id="section-linemove-2">
-                            <form action="" method="post" class="form-material">
+                            <?php echo form_open_multipart('sekolah/simpan/logo');?>
                                 <div class="form-group">
                                     <p>Klik untuk mengganti logo</p>
-                                    <input type="file" name="logo" data-default-file="<?=base_url()?>plugins/images/<?= $data['logo'] ?>" id="input-file-disable-remove" class="dropify" data-show-remove="false" data-show-errors="true" data-show-loader="false" data-allowed-file-extensions="png"/> 
+                                    <input type="file" name="logo" data-default-file="<?=base_url()?>plugins/images/<?= $data['logo'] ?>" id="input-file-disable-remove" class="dropify" data-show-remove="false" data-show-errors="true" data-show-loader="false" data-allowed-file-extensions="png" allowed=".png"/> 
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Simpan Perubahan" class="btn btn-primary col-md-12">

@@ -14,7 +14,11 @@ class Mcore extends CI_Model {
 
     public function update_sch($data){
         return $this->db->update('tb_sekolah', $data);
-        
+    }
+
+    public function update_logo_sch(){
+        $data = array('logo'=> 'logo.png');
+        return $this->db->update('tb_sekolah', $data);
     }
 }
 

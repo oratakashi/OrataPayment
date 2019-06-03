@@ -75,6 +75,8 @@
         <?php
             if($this->session->userdata('lev_user') == 'Kepala Sekolah'){
                 $this->load->view('sidebar/kepsek.php');                
+            }elseif($this->session->userdata('lev_user') == 'Operator'){
+                $this->load->view('sidebar/operator.php');                
             }
         ?>
         <!-- ============================================================== -->
@@ -103,6 +105,10 @@
                 }elseif($content == 'sekolah'){
                     $this->load->view('content/sekolah.php');
                     $this->load->view('ajax/kelas.php');
+                    $this->load->view('modal/tambah_kelas.php');
+                }elseif($content == 'siswa'){
+                    $this->load->view('content/siswa.php');
+                    $this->load->view('ajax/siswa.php');
                     $this->load->view('modal/tambah_kelas.php');
                 }
             ?>
