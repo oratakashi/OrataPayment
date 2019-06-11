@@ -30,7 +30,7 @@ class Ta extends CI_Controller {
         }else{
             if($this->session->userdata('lev_user')=='Kepala Sekolah'){
                 $data = [
-                    'judul'             => 'Konfigurasi Tahun Ajaran - '.$this->conf->nama_apps,
+                    'judul'             => 'Data Master Tahun Ajaran - '.$this->conf->nama_apps,
                     'nama_apps'         => $this->conf->nama_apps,
                     'versi'             => $this->conf->versi,
                     'code_name'         => $this->conf->code_name,

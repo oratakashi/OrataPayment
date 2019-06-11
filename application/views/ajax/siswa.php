@@ -2,7 +2,8 @@
     echo "
     <script>
         var get_url = '".base_url('siswa/read')."';
-        var create_url = '".base_url('kelas/create')."';
+        var base_url = '".base_url()."';
+        var create_url = '".base_url('siswa/create')."';
         var delete_url = '".base_url('kelas/delete')."';
     </script>";
 ?>

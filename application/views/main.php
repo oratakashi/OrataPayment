@@ -37,6 +37,7 @@
     <link href="<?= base_url() ?>assets/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>assets/plugins/bower_components/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/bower_components/dropify/dist/css/dropify.min.css">
+    <link href="<?= base_url() ?>assets/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
 
     <!-- SweetAlert -->
     <link href="<?= base_url() ?>assets/plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
@@ -110,6 +111,10 @@
                     $this->load->view('content/siswa.php');
                     $this->load->view('ajax/siswa.php');
                     $this->load->view('modal/tambah_kelas.php');
+                }elseif($content == 'setkelas'){
+                    $this->load->view('content/setkelas.php');
+                    $this->load->view('ajax/siswa.php');
+                    $this->load->view('modal/tambah_kelas.php');
                 }
             ?>
             <!-- /.container-fluid -->
@@ -129,6 +134,7 @@
     <!-- ============================================================== -->
     <!-- Bootstrap Core JavaScript -->
     <script src="<?= base_url() ?>assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>assets/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <!-- Menu Plugin JavaScript -->
     <script src="<?= base_url() ?>assets/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
     <!--slimscroll JavaScript -->
@@ -182,6 +188,9 @@
                 'maxHeight': 'The image height is too big ({{ value }}px max).',
                 'imageFormat': 'The image format is not allowed ({{ value }} only).'
             }
+        });
+        $('#datepicker-autoclose').datepicker({
+            autoclose: true
         });
     </script>
 </body>
