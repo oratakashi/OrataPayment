@@ -53,6 +53,54 @@
                 echo json_encode(array("siswa"=>$data));
             }
         }
+        
+
+        public function create()
+        {
+            if($_SERVER['REQUEST_METHOD']=='POST'){
+                
+                $nis = $this->input->post('nis');
+
+                $config['upload_path'] = './media/siswa/';
+                $config['allowed_types'] = 'jpg';
+                $config['max_size']  = '5000';
+                $config['file_name']            = $nis.".jpg";
+                $config['overwrite']            = true;
+                
+                $this->load->library('upload', $config);
+                $this->upload->initialize($config);
+                if ( ! $this->upload->do_upload('foto')){
+                    $error = array('error' => $this->upload->display_errors());
+                    print_r($error);
+                    // echo "<script>alert('Data gagal di simpan!')</script>";
+                    // redirect('siswa','refresh');
+                }
+                else{
+                    $data = array('upload_data' => $this->upload->data());
+                    $data = array(
+                        'nis'           => $nis,
+                        'nama_siswa'    => $this->input->post('nama_lengkap'),
+                        'jk'            => $this->input->post('jk'),
+                        'tmp_lahir'     => $this->input->post('tmp_lahir'),
+                        'tgl_lahir'     => date_format(date_create($this->input->post('tgl_lahir')), 'Y-m-d'),
+                        'nama_ayah'     => $this->input->post('nama_ayah'),
+                        'nama_ibu'      => $this->input->post('nama_ibu'),
+                        'no_hp'         => $this->input->post('no_hp'),
+                        'email'         => $this->input->post('email'),
+                        'alamat'        => $this->input->post('alamat'),
+                        'foto'          => $nis.".jpg",
+                        'status'        => 'Aktif'
+                    );
+                    $this->msiswa->create($data);
+                    echo "<script>alert('Data berhasil di simpan!')</script>";
+                    redirect('siswa','refresh');
+                    
+                }
+                
+            }else{
+                redirect('siswa','refresh');
+            }
+        }
     
     }
     

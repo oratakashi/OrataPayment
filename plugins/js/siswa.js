@@ -41,6 +41,45 @@ $(document).ready(function () {
 		$('#form-tambah').fadeOut();
 		$('#content').fadeIn();
 	});
+	$('#nis').keyup(function (e) { 
+		$('#validation').html('');
+		$('#layout_nis').removeClass('has-error');
+	});
+	$('#nama_lengkap').keyup(function (e) { 
+		$('#validation').html('');
+		$('#layout_nama').removeClass('has-error');
+	});
+	$('#tmp_lahir').keyup(function (e) { 
+		$('#validation').html('');
+		$('#layout_tgl').removeClass('has-error');
+	});
+	$('#tgl_lahir').keyup(function (e) { 
+		$('#validation').html('');
+		$('#layout_tgl').removeClass('has-error');
+	});
+	$('#nama_ayah').keyup(function (e) { 
+		$('#validation').html('');
+		$('#layout_nama_ayah').removeClass('has-error');
+	});
+	$('#nama_ibu').keyup(function (e) { 
+		$('#validation').html('');
+		$('#layout_nama_ibu').removeClass('has-error');
+	});
+	$('#o_hp').keyup(function (e) { 
+		$('#validation').html('');
+		$('#layout_no_hp').removeClass('has-error');
+	});
+	$('#jk').change(function (e) { 
+		if($('#jk').val() == ''){
+			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> Jenis Kelamin tidak boleh kosong. </div>`);
+            $('#layout_jk').addClass('has-error');
+		}else{
+			$('#validation').html('');
+			$('#layout_jk').removeClass('has-error');
+		}
+	});
+	validasi_form();
 });
 
 function get_data() {
@@ -68,7 +107,17 @@ function get_data() {
 				data: 'jk'
 			},
 			{
-				data: 'status'
+				"data": 'status',
+				"mRender": function (data) {
+					if (data == 'Aktif') {
+						var status = 'Aktif';
+						return `<span class="text-center label label-success label-bordered">` + status + `</span>`;
+					} else if (data == 'Tidak Aktif') {
+						var status = 'Tidak Aktif';
+						return `<span class="text-center label label-danger label-bordered">` + status + `</span>`;
+					}
+
+				}
 			},
 			{
 				"data": 'nis',
@@ -77,7 +126,7 @@ function get_data() {
 					return `
                 <center>
                     <div class="btn-group m-r-10">
-                        <button class="btn btn-info waves-effect waves-light">Detail</button>
+                        <button class="btn btn-info waves-effect waves-light">Detail Siswa</button>
 						<button aria-expanded="false" data-toggle="dropdown" class="btn btn-info dropdown-toggle waves-effect waves-light" type="button"><span class="caret"></span></button>
 						<ul role="menu" class="dropdown-menu animated bounceIn">
 						<li><a href="#">Action</a></li>
@@ -95,9 +144,58 @@ function get_data() {
 	});
 	setInterval(() => {
 		table.ajax.reload(null, false);
-	}, 3000);
+	}, 10000);
 }
 
 function filter(){
 	alert('tes');
+}
+
+function validasi_form() { 
+	$('#form_tambah').submit(function (e) { 
+		if($('#nis').val() == ''){
+			e.preventDefault();
+			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> NIS tidak boleh kosong. </div>`);
+            $('#layout_nis').addClass('has-error');
+		}else if($('#nama_lengkap').val() == ''){
+			e.preventDefault();
+			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> Nama tidak boleh kosong. </div>`);
+            $('#layout_nama').addClass('has-error');
+		}else if($('#tmp_lahir').val() == ''){
+			e.preventDefault();
+			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> Tempat Lahir tidak boleh kosong. </div>`);
+            $('#layout_tgl').addClass('has-error');
+		}else if($('#tgl_lahir').val() == ''){
+			e.preventDefault();
+			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> Tanggal Lahir tidak boleh kosong. </div>`);
+            $('#layout_tgl').addClass('has-error');
+		}else if($('#jk').val() == ''){
+			e.preventDefault();
+			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> Jenis Kelamin tidak boleh kosong. </div>`);
+            $('#layout_jk').addClass('has-error');
+		}else if($('#nama_ayah').val() == ''){
+			e.preventDefault();
+			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> Nama Ayah tidak boleh kosong. </div>`);
+            $('#layout_nama_ayah').addClass('has-error');
+		}else if($('#nama_ibu').val() == ''){
+			e.preventDefault();
+			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> Nama Ibu tidak boleh kosong. </div>`);
+            $('#layout_nama_ibu').addClass('has-error');
+		}else if($('#no_hp').val() == ''){
+			e.preventDefault();
+			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> No Hp tidak boleh kosong. </div>`);
+            $('#layout_no_hp').addClass('has-error');
+		}else{
+			alert('ok');
+
+		}
+	});
 }

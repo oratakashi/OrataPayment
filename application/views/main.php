@@ -190,7 +190,12 @@
             }
         });
         $('#datepicker-autoclose').datepicker({
+            format: 'dd-mm-yyyy',
             autoclose: true
+        });
+        $('#datepicker-autoclose').change(function (e) { 
+            e.preventDefault();
+            
         });
     </script>
 </body>

@@ -7,7 +7,7 @@
 			</div>
 			<div class="modal-body">
 				<form action="" class="form-material">
-				<div class="form-group" id="validation"></div>
+					<div class="form-group" id="validation"></div>
 					<div class="form-group" id="layout_id">
 						<label for="">ID. Pengguna</label>
 						<input type="text" name="" id="id_operator" disabled class="form-control">

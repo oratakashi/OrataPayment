@@ -7,6 +7,11 @@
         public function read(){
             return $this->db->get('tb_siswa');
         }
+
+        public function create($data)
+        {
+            return $this->db->insert('tb_siswa', $data);
+        }
     
     }
     
