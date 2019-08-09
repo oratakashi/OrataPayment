@@ -101,7 +101,33 @@
                 redirect('siswa','refresh');
             }
         }
-    
+        
+        public function detail()
+        {
+            $nis = $this->uri->segment(3);
+            $kelas_aktif = array();
+            $data_kelas = array();
+            
+            $data = array();
+            if($this->mkelas->read_nis_aktif($nis)->num_rows() > 0){
+                $kelas_aktif = $this->mkelas->read_nis_aktif($nis)->row_array();
+                
+            }else{
+                $kelas_aktif['kelas'] = "Tidak ada";
+            }
+            if($this->mkelas->read_riwayat($nis)->num_rows() > 0){
+                $data_kelas['isi_data'] = $this->mkelas->read_riwayat($nis)->result_array();
+                $data_kelas['cek'] = "not_null";
+            }else{
+                $data_kelas['cek'] = "null";
+            }
+            $data = array(
+                "data_siswa" => $this->msiswa->read_nis($nis)->row_array(),
+                "kelas_aktif"   => $kelas_aktif,
+                "data_kelas"    => $data_kelas
+            );
+            echo json_encode($data);
+        }
     }
     
     /* End of file Siswa.php */

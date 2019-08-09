@@ -16,6 +16,9 @@
         {
             parent::__construct();
             $this->load->model('mta');
+            $this->load->model('mkelas');
+            $this->load->model('msiswa');
+            $this->load->model('msetkelas');
             $this->conf = $this->core->read_conf()->row();
             $this->sch = $this->core->read_sch()->row();
         }
@@ -30,12 +33,40 @@
                     'versi'             => $this->conf->versi,
                     'code_name'         => $this->conf->code_name,
                     'nama_sekolah'      => $this->sch->nama_sekolah,
+                    'data_ta'           => $this->mta->read()->result_array(),
+                    'data_kls'          => $this->mkelas->readAll()->result_array(),
                     'content'           => 'setkelas'
                 ];
                 $this->load->view('main', $data);
             }
         }
+
+        public function read()
+        {
+            if($_SERVER['REQUEST_METHOD']=='POST'){
+
+                $data = $this->msiswa->read_murid_baru()->result_array();
+
+                echo json_encode(array("siswa"=>$data));
+            }
+        }
+
+        public function create()
+        {
+            if($_SERVER['REQUEST_METHOD']=='POST'){
+                $data = array(
+                    "id_kelas"  => $this->input->post('id_kelas'),
+                    "id_ta"     => $this->input->post('id_ta'),
+                    "nis"     => $this->input->post('nis')                
+                );
+                $this->msetkelas->create($data);
+                $result['code'] = "1";
+                $result["message"] = "Berhasil";
     
+                echo json_encode($result);
+            }
+        }
+        
     }
     
     /* End of file Setkelas.php */

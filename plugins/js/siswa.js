@@ -1,5 +1,6 @@
 $(document).ready(function () {
 	$('#form-tambah').fadeOut();
+	$('#form-detail').fadeOut();
 	get_data();
 	$('#filter_ta').change(function (e) {
 		e.preventDefault();
@@ -41,6 +42,11 @@ $(document).ready(function () {
 		$('#form-tambah').fadeOut();
 		$('#content').fadeIn();
 	});
+	$('#btnClose').click(function (e) {
+		e.preventDefault();
+		$('#form-detail').fadeOut();
+		$('#content').fadeIn();
+	});
 	$('#nis').keyup(function (e) { 
 		$('#validation').html('');
 		$('#layout_nis').removeClass('has-error');
@@ -65,9 +71,17 @@ $(document).ready(function () {
 		$('#validation').html('');
 		$('#layout_nama_ibu').removeClass('has-error');
 	});
-	$('#o_hp').keyup(function (e) { 
+	$('#no_hp').keyup(function (e) { 
 		$('#validation').html('');
 		$('#layout_no_hp').removeClass('has-error');
+	});
+	$('#email').keyup(function (e) { 
+		$('#validation').html('');
+		$('#layout_email').removeClass('has-error');
+	});
+	$('#alamat').keyup(function (e) { 
+		$('#validation').html('');
+		$('#layout_alamat').removeClass('has-error');
 	});
 	$('#jk').change(function (e) { 
 		if($('#jk').val() == ''){
@@ -104,9 +118,6 @@ function get_data() {
 				data: 'nama_siswa'
 			},
 			{
-				data: 'jk'
-			},
-			{
 				"data": 'status',
 				"mRender": function (data) {
 					if (data == 'Aktif') {
@@ -115,6 +126,8 @@ function get_data() {
 					} else if (data == 'Tidak Aktif') {
 						var status = 'Tidak Aktif';
 						return `<span class="text-center label label-danger label-bordered">` + status + `</span>`;
+					} else{
+						return `<span class="text-center label label-warning label-bordered">` + data + `</span>`;
 					}
 
 				}
@@ -122,20 +135,12 @@ function get_data() {
 			{
 				"data": 'nis',
 				"mRender": function (data) {
-					var id_operator = "'" + data + "'";
+					var nis = "'" + data + "'";
 					return `
                 <center>
-                    <div class="btn-group m-r-10">
-                        <button class="btn btn-info waves-effect waves-light">Detail Siswa</button>
-						<button aria-expanded="false" data-toggle="dropdown" class="btn btn-info dropdown-toggle waves-effect waves-light" type="button"><span class="caret"></span></button>
-						<ul role="menu" class="dropdown-menu animated bounceIn">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
-						</ul>
-					</div>
+				<button type="button" class="btn btn-success btn-rounded" onclick="detail_siswa(`+nis+`)"><i class="fa fa-info-circle"></i>  Detail Murid</button>
+				<button type="button" class="btn btn-primary btn-outline btn-rounded" onclick=""><i class="fa fa-pencil"></i> </button>
+				<button type="button" class="btn btn-danger btn-outline btn-rounded" onclick=""><i class="fa fa-trash"></i> </button>
 				</center>
 			  `;
 				}
@@ -193,9 +198,56 @@ function validasi_form() {
 			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> No Hp tidak boleh kosong. </div>`);
             $('#layout_no_hp').addClass('has-error');
-		}else{
-			alert('ok');
+		}else if($('#email').val() == ''){
+			e.preventDefault();
+			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> Email tidak boleh kosong. </div>`);
+            $('#layout_email').addClass('has-error');
+		}else if($('#alamat').val() == ''){
+			e.preventDefault();
+			$('#validation').html(`<div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> Alamat tidak boleh kosong. </div>`);
+            $('#layout_alamat').addClass('has-error');
+		}
+	});
+}
 
+function detail_siswa(nis) {
+	$('#detail_kelas').html("Belum ada kelas");
+	$('#detail_riwayat').html("");
+	$.ajax({
+		type: "get",
+		url: detail_url+"/"+nis,
+		dataType: "json",
+		success: function (response) {
+			$('#detail_nis').html("NIS : "+response.data_siswa.nis);
+			$('#detail_nama').html(response.data_siswa.nama_siswa);
+			$('#detail_jk').html(response.data_siswa.jk);
+			$('#detail_ttl').html(response.data_siswa.tmp_lahir+", "+response.data_siswa.tgl_lahir);
+			$('#detail_ayah').html(response.data_siswa.nama_ayah);
+			$('#detail_ibu').html(response.data_siswa.nama_ibu);
+			$('#detail_email').html(response.data_siswa.email);
+			$('#detail_alamat').html(response.data_siswa.alamat);
+			$('#detail_kelas').html(response.kelas_aktif.kelas);
+			if(response.data_kelas.cek == 'not_null'){
+				$.each(response.data_kelas.isi_data, function (index, value) { 
+					 $('#detail_riwayat').append(`
+						 <tr>
+							 <td>`+(index+1)+`</td>
+							 <td>`+value.tahun_ajaran+`</td>
+							 <td>`+value.kelas+`</td>
+						 <td>
+					 `);
+				});
+			}else{
+				$('#detail_riwayat').append(`
+					<tr>
+						<td col-span='3' class='text-center'>Siswa belum masuk ke dalam kelas</td>
+					<td>
+				`);
+			}
+			$('#content').fadeOut();
+			$('#form-detail').fadeIn();
 		}
 	});
 }

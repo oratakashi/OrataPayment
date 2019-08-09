@@ -110,10 +110,9 @@
                 }elseif($content == 'siswa'){
                     $this->load->view('content/siswa.php');
                     $this->load->view('ajax/siswa.php');
-                    $this->load->view('modal/tambah_kelas.php');
                 }elseif($content == 'setkelas'){
                     $this->load->view('content/setkelas.php');
-                    $this->load->view('ajax/siswa.php');
+                    $this->load->view('ajax/setkelas.php');
                     $this->load->view('modal/tambah_kelas.php');
                 }
             ?>

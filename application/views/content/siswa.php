@@ -65,10 +65,9 @@
 								<tr>
 									<th width="15%">NIS</th>
 									<th width="11%"></th>
-									<th width="25%">Nama Siswa</th>
-									<th width="13%">Jenis Kelamin</th>
-									<th width="16%">Status</th>
-									<th width="16%">Aksi</th>
+									<th width="32%">Nama Siswa</th>
+									<th width="13%">Status</th>
+									<th width="29%">Aksi</th>
 								</tr>
 							</thead>
 							<tbody></tbody>
@@ -159,6 +158,70 @@
 								</div>
 							</div>
 						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="form-detail">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="white-box">
+					<h3 class="box-title m-b-0">Detail Siswa<button class="btn btn-danger btn-outline btn-rounded" style="float:right" id="btnClose"><i class="ti-arrow-left"></i> Kembali</button></h3>
+					<div class="row" style="margin-top:30px">
+						<div class="col-md-3 text-center">
+							<img class="img-circle" style="width:128px;height:128px;padding-right:-5px" src="<?= base_url() ?>/media/siswa/8555.jpg" alt="user" />
+						</div>
+						<div class="col-md-9">
+							<h4 class="page-title" id="detail_nis">NIS : 123456789</h4>
+							<table class="table table-borderless">
+								<tr>
+									<td>Nama Siswa</td>
+									<td id="detail_nama">Oratakashi Nhamako</td>
+								</tr>
+								<tr>
+									<td>Jenis Kelamin</td>
+									<td id="detail_jk">Perempuan</td>
+								</tr>
+								<tr>
+									<td>Tempat & Tgl lahir</td>
+									<td id="detail_ttl">Pekalongan, 12 September 1996</td>
+								</tr>
+								<tr>
+									<td>Nama Ayah</td>
+									<td id="detail_ayah">Nama Ayah</td>
+								</tr>
+								<tr>
+									<td>Nama Ibu</td>
+									<td id="detail_ibu">Nama Ibu</td>
+								</tr>
+								<tr>
+									<td>Email</td>
+									<td id="detail_email">Email</td>
+								</tr>
+								<tr>
+									<td>Alamat</td>
+									<td id="detail_alamat">Alamat</td>
+								</tr>
+								<tr>
+									<td>Saat ini di kelas</td>
+									<td id="detail_kelas">XI IPA 1</td>
+								</tr>
+							</table>
+							<h4 class="page-title">Riwayat Kelas</h4>
+							<table class="table">
+								<thead>
+									<th>No</th>
+									<th>Tahun Ajaran</th>
+									<th>Kelas</th>
+								</thead>
+								<tbody id="detail_riwayat">
+									<th>1</th>
+									<th>1</th>
+									<th>1</th>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

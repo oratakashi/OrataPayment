@@ -25,8 +25,55 @@
                     </nav>
                     <div class="content-wrap">
                         <section id="section-linemove-1" >
-                            <h3 class="box-title m-b-0">Konfigurasi Sekolah <button class="btn btn-primary btn-outline btn-rounded" style="float:right" data-trigger="tambah_pengguna" id="btnTambah"><i class="ti-plus"></i> Masukan Murid</button></h3>
-                            <p class="text-muted m-b-30">Konfigurasi untuk mengatur informasi mengenai sekolah</p>
+                            <h3 class="box-title m-b-0">Pengaturan Kelas Baru </h3>
+                            <p class="text-muted m-b-30">Konfigurasi untuk menempatkan murid baru ke kelas</p>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<select name="" id="filter_ta" class="form-control">
+											<option value="">-- Pilih Tahun Ajaran --</option>
+											<?php foreach($data_ta as $data){ ?>
+												<option value="<?= $data['id_ta'] ?>"><?= $data['tahun_ajaran'] ?> <?php if($data['sta_aktif']=='1'){echo "[ Sedang Aktif ]";} ?></option>
+											<?php } ?>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<select name="" id="filter_kelas" class="form-control" disabled>
+											<option value="">-- Pilih Kelas --</option>
+											<?php foreach($data_kls as $data){ ?>
+												<option value="<?= $data['id_kelas'] ?>"><?= $data['kelas'] ?></option>
+											<?php } ?>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<button class="btn btn-primary btn-outline btn-rounded col-md-12" id="btnTambah"><i class="ti-plus"></i> Tampilkan Data</button>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="white-box">
+										<div class="table-responsive">
+											<table id="data-klsbaru" class="table table-striped">
+												<thead>
+													<tr>
+														<th width="15%">NIS</th>
+														<th width="11%"></th>
+														<th width="25%">Nama Siswa</th>
+														<th width="13%">Jenis Kelamin</th>
+														<th width="16%">Aksi</th>
+													</tr>
+												</thead>
+												<tbody></tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
                         </section>
                         <section id="section-linemove-2">
                             

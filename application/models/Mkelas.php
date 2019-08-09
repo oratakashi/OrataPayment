@@ -28,7 +28,29 @@
             $this->db->where('id_kelas', $id_kelas);
             return $this->db->delete('tb_kelas');
         }
-    
+        
+        public function read_id($id_kelas)
+        {
+            $this->db->where('id_kelas', $id_kelas);
+            return $this->db->get('tb_kelas');
+        }
+
+        public function read_nis_aktif($nis)
+        {
+            $this->db->join('tb_setkelas', 'tb_setkelas.id_kelas = tb_kelas.id_kelas', 'left');
+            $this->db->join('tb_tahunajaran', 'tb_tahunajaran.id_ta = tb_setkelas.id_ta', 'left');
+            $this->db->where('tb_setkelas.nis', $nis);
+            
+            return $this->db->get('tb_kelas');
+        }
+
+        public function read_riwayat($nis)
+        {
+            $this->db->join('tb_setkelas', 'tb_setkelas.id_kelas = tb_kelas.id_kelas', 'left');
+            $this->db->join('tb_tahunajaran', 'tb_tahunajaran.id_ta = tb_setkelas.id_ta', 'left');
+            $this->db->where('tb_setkelas.nis', $nis);
+            return $this->db->get('tb_kelas');
+        }
     }
     
     /* End of file Mkelas.php */

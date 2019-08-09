@@ -118,6 +118,21 @@
                 echo json_encode($result);
             }
         }
+
+        /**
+         * Method untuk mengambil detail kelas per ID
+         */
+
+        public function read_kelas()
+        {
+            if($_SERVER['REQUEST_METHOD']=='POST'){
+                $id_kelas = $_POST['id_kelas'];
+
+                $data = $this->mkelas->read_id($id_kelas)->row_array();
+
+                echo json_encode($data);
+            }
+        }
     }
 
     /* End of file Kelas.php */
