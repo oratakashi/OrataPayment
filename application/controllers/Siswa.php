@@ -128,6 +128,14 @@
             );
             echo json_encode($data);
         }
+
+        public function filter()
+        {
+            $id_ta = $this->input->post('id_ta');
+            $id_kelas = $this->input->post('id_kelas');
+            $status = $this->input->post('status');
+            
+        }
     }
     
     /* End of file Siswa.php */

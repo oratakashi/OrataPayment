@@ -47,6 +47,10 @@ $(document).ready(function () {
 		$('#form-detail').fadeOut();
 		$('#content').fadeIn();
 	});
+	$('#btnFilter').click(function (e) { 
+		e.preventDefault();
+		filter();
+	});
 	$('#nis').keyup(function (e) { 
 		$('#validation').html('');
 		$('#layout_nis').removeClass('has-error');
@@ -153,7 +157,7 @@ function get_data() {
 }
 
 function filter(){
-	alert('tes');
+	
 }
 
 function validasi_form() { 

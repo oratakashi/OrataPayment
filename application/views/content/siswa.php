@@ -49,7 +49,7 @@
 						</div>
 						<div class="col-md-2">
 							<div class="form-group">
-								<button class="btn btn-danger btn-rounded col-md-12">Filter</button>
+								<button class="btn btn-danger btn-rounded col-md-12" id="btnFilter">Filter</button>
 							</div>
 						</div>
 					</div>
