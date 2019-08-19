@@ -59,6 +59,9 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="white-box">
+					<div id="alert_filter">
+						<div class="alert alert-info alert-dismissable" id="notif_filter"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> Menampilkan data yang difilter. </div>
+					</div>
 					<div class="table-responsive">
 						<table id="data-siswa" class="table table-striped">
 							<thead>
@@ -170,7 +173,7 @@
 					<h3 class="box-title m-b-0">Detail Siswa<button class="btn btn-danger btn-outline btn-rounded" style="float:right" id="btnClose"><i class="ti-arrow-left"></i> Kembali</button></h3>
 					<div class="row" style="margin-top:30px">
 						<div class="col-md-3 text-center">
-							<img class="img-circle" style="width:128px;height:128px;padding-right:-5px" src="<?= base_url() ?>/media/siswa/8555.jpg" alt="user" />
+							<img class="img-circle" id="detail_foto" style="width:128px;height:128px;padding-right:-5px" src="<?= base_url() ?>/media/siswa/8555.jpg" alt="user" />
 						</div>
 						<div class="col-md-9">
 							<h4 class="page-title" id="detail_nis">NIS : 123456789</h4>

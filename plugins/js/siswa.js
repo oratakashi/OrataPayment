@@ -1,4 +1,7 @@
+var is_filtered = false;
+var interval;
 $(document).ready(function () {
+	$('#alert_filter').fadeOut();
 	$('#form-tambah').fadeOut();
 	$('#form-detail').fadeOut();
 	get_data();
@@ -49,7 +52,7 @@ $(document).ready(function () {
 	});
 	$('#btnFilter').click(function (e) { 
 		e.preventDefault();
-		filter();
+		validasi_filter();
 	});
 	$('#nis').keyup(function (e) { 
 		$('#validation').html('');
@@ -97,14 +100,92 @@ $(document).ready(function () {
 			$('#layout_jk').removeClass('has-error');
 		}
 	});
+	$('#notif_filter').on('closed.bs.alert', function () {
+		$('#data-siswa').DataTable().clear().destroy();
+		get_data();
+		$('#filter_ta option')[0].selected = true;
+		$('#filter_kelas').prop('disabled', true);
+		$('#filter_kelas option')[0].selected = true;
+		$('#filter_status').prop('disabled', true);
+		$('#filter_status').html(`<option value="">-- Pilih Status --</option>`);
+	})
 	validasi_form();
 });
 
 function get_data() {
+	clearInterval(interval);
+	is_filtered = false;
 	var table = $('#data-siswa').DataTable({
 		"ajax": {
 			url: get_url,
 			type: "get",
+			dataSrc: 'siswa'
+		},
+		"columns": [{
+			data: 'nis'
+		},
+		{
+			"data": "foto",
+			"mRender": function(data){
+				return `
+					<img class="img-circle" style="width:64px;height:64px;padding-right:-5px" src="`+base_url+`media/siswa/`+data+`" alt="user" />
+				`;
+			}
+		},
+		{
+			data: 'nama_siswa'
+		},
+		{
+			"data": 'status',
+			"mRender": function (data) {
+				if (data == 'Aktif') {
+					var status = 'Aktif';
+					return `<span class="text-center label label-success label-bordered">` + status + `</span>`;
+				} else if (data == 'Tidak Aktif') {
+					var status = 'Tidak Aktif';
+					return `<span class="text-center label label-danger label-bordered">` + status + `</span>`;
+				} else{
+					return `<span class="text-center label label-warning label-bordered">` + data + `</span>`;
+				}
+
+			}
+		},
+		{
+			"data": 'nis',
+			"mRender": function (data) {
+				var nis = "'" + data + "'";
+				return `
+					<center>
+						<button type="button" class="btn btn-success btn-rounded" onclick="detail_siswa(`+nis+`)"><i class="fa fa-info-circle"></i>  Detail Murid</button>
+						<button type="button" class="btn btn-primary btn-outline btn-rounded" onclick=""><i class="fa fa-pencil"></i> </button>
+						<button type="button" class="btn btn-danger btn-outline btn-rounded" onclick="hapus_siswa(`+nis+`)"><i class="fa fa-trash"></i> </button>
+					</center>
+				`;
+			}
+		}
+	]
+	});
+	if(is_filtered == false){
+		interval = setInterval(() => {
+			table.ajax.reload(null, false);
+		}, 10000);	
+	}
+}
+
+function filter(){
+	$('#alert_filter').fadeIn();
+	clearInterval(interval);
+	is_filtered = true;
+	$('#data-siswa').DataTable().clear().destroy();
+	var table = $('#data-siswa').DataTable({
+		"ajax": {
+			url: filter_url,
+			type: "post",
+			data:{
+				status 		: $('#filter_status').val(),
+				id_ta 		: $('#filter_ta').val(),
+				id_kelas	: $('#filter_kelas').val(),
+			},
 			dataSrc: 'siswa'
 		},
 		"columns": [{
@@ -141,23 +222,31 @@ function get_data() {
 				"mRender": function (data) {
 					var nis = "'" + data + "'";
 					return `
-                <center>
-				<button type="button" class="btn btn-success btn-rounded" onclick="detail_siswa(`+nis+`)"><i class="fa fa-info-circle"></i>  Detail Murid</button>
-				<button type="button" class="btn btn-primary btn-outline btn-rounded" onclick=""><i class="fa fa-pencil"></i> </button>
-				<button type="button" class="btn btn-danger btn-outline btn-rounded" onclick=""><i class="fa fa-trash"></i> </button>
-				</center>
-			  `;
+						<center>
+							<button type="button" class="btn btn-success btn-rounded" onclick="detail_siswa(`+nis+`)"><i class="fa fa-info-circle"></i>  Detail Murid</button>
+							<button type="button" class="btn btn-primary btn-outline btn-rounded" onclick=""><i class="fa fa-pencil"></i> </button>
+							<button type="button" class="btn btn-danger btn-outline btn-rounded" onclick="hapus_siswa(`+nis+`)"><i class="fa fa-trash"></i> </button>
+						</center>
+					`;
 				}
 			}
 		]
 	});
-	setInterval(() => {
-		table.ajax.reload(null, false);
-	}, 10000);
+	if(is_filtered == true){
+		interval = setInterval(() => {
+			table.ajax.reload(null, false);
+		}, 10000);
+	}
 }
 
-function filter(){
-	
+function validasi_filter() {
+	if($('#filter_ta').val() != ''){
+		if($('#filter_kelas').val() != ''){
+			if($('#filter_status').val() != ''){
+				filter();
+			}
+		}
+	}
 }
 
 function validasi_form() { 
@@ -224,6 +313,7 @@ function detail_siswa(nis) {
 		url: detail_url+"/"+nis,
 		dataType: "json",
 		success: function (response) {
+			$('#detail_foto').attr('src', base_url + "media/siswa/" + response.data_siswa.foto);
 			$('#detail_nis').html("NIS : "+response.data_siswa.nis);
 			$('#detail_nama').html(response.data_siswa.nama_siswa);
 			$('#detail_jk').html(response.data_siswa.jk);
@@ -254,4 +344,37 @@ function detail_siswa(nis) {
 			$('#form-detail').fadeIn();
 		}
 	});
+}
+
+function hapus_siswa(nis) { 
+	swal({   
+        title: "Apa anda yakin?",   
+        text: "Semua data yang berkaitan dengan siswa tersebut akan terhapus juga!",   
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "#DD6B55",   
+        confirmButtonText: "Ya",   
+        cancelButtonText: "Batal",   
+        closeOnConfirm: false,   
+        closeOnCancel: true 
+    }, function(isConfirm){   
+        if (isConfirm) {
+            $.ajax({
+                type: "post",
+                url: delete_url,
+                data: {
+                    "nis" : nis
+                },
+                dataType: "json",
+                success: function (response) {
+                    if(response.success=="1"){
+                        swal("Berhasil!", "siswa telah terhapus.", "success");   
+                    }else{
+                        swal("Gagal!", "Penghapusan kelas gagal di lakukan.", "error");   
+                    }
+                }
+            });     
+            
+        } 
+    });
 }

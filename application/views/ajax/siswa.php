@@ -6,7 +6,7 @@
         var filter_url = '".base_url('siswa/filter')."';
         var base_url = '".base_url()."';
         var create_url = '".base_url('siswa/create')."';
-        var delete_url = '".base_url('kelas/delete')."';
+        var delete_url = '".base_url('siswa/delete')."';
     </script>";
 ?>
 <script src="<?= base_url() ?>plugins/js/siswa.js"></script>

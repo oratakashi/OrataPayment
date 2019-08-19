@@ -131,10 +131,34 @@
 
         public function filter()
         {
-            $id_ta = $this->input->post('id_ta');
-            $id_kelas = $this->input->post('id_kelas');
-            $status = $this->input->post('status');
-            
+            if($_SERVER['REQUEST_METHOD']=='POST'){
+                $id_ta = $this->input->post('id_ta');
+                $id_kelas = $this->input->post('id_kelas');
+                $status = $this->input->post('status');
+                
+                $data = $this->msiswa->filter_siswa($id_ta, $id_kelas, $status)->result_array();
+
+                echo json_encode(array("siswa"=>$data));
+            }
+        }
+
+        public function delete()
+        {
+            if($_SERVER['REQUEST_METHOD']=='POST'){
+                $nis = $this->input->post('nis');
+                
+                $this->msiswa->delete($nis);
+
+                $result['success'] = "1";
+                $result["message"] = "Berhasil";
+
+                echo json_encode($result);
+            }else{
+                $result['success'] = "0";
+                $result["message"] = "Gagal";
+
+                echo json_encode($result);
+            }
         }
     }
     
